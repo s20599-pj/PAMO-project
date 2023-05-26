@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/FirstFragment">
+    app:startDestination="@id/menu">
 
     <fragment
         android:id="@+id/FirstFragment"
@@ -24,5 +24,40 @@
         <action
             android:id="@+id/action_SecondFragment_to_FirstFragment"
             app:destination="@id/FirstFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/menu"
+        android:name="com.pjatk.quizmo.Menu"
+        android:label="fragment_menu"
+        tools:layout="@layout/fragment_menu" >
+        <action
+            android:id="@+id/action_menu_to_choose_game"
+            app:destination="@id/choose_game" />
+    </fragment>
+    <fragment
+        android:id="@+id/choose_game"
+        android:name="com.pjatk.quizmo.Choose_game"
+        android:label="fragment_choose_game"
+        tools:layout="@layout/fragment_choose_game" >
+        <action
+            android:id="@+id/action_choose_game_to_menu"
+            app:destination="@id/menu" />
+        <action
+            android:id="@+id/action_choose_game_to_play"
+            app:destination="@id/play" />
+    </fragment>
+    <fragment
+        android:id="@+id/play"
+        android:name="com.pjatk.quizmo.Play"
+        android:label="fragment_play"
+        tools:layout="@layout/fragment_play" />
+    <fragment
+        android:id="@+id/splash"
+        android:name="com.pjatk.quizmo.Splash"
+        android:label="fragment_splash"
+        tools:layout="@layout/fragment_splash" >
+        <action
+            android:id="@+id/action_splash_to_menu"
+            app:destination="@id/menu" />
     </fragment>
 </navigation>
