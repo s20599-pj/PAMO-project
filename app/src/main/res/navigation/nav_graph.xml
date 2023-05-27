@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/FirstFragment"
-        android:name="com.pjatk.quizmo.FirstFragment"
+        android:name="com.pjatk.quizmo.fragments.FirstFragment"
         android:label="@string/first_fragment_label"
         tools:layout="@layout/fragment_first">
 
@@ -17,7 +17,7 @@
     </fragment>
     <fragment
         android:id="@+id/SecondFragment"
-        android:name="com.pjatk.quizmo.SecondFragment"
+        android:name="com.pjatk.quizmo.fragments.SecondFragment"
         android:label="@string/second_fragment_label"
         tools:layout="@layout/fragment_second">
 
@@ -27,7 +27,7 @@
     </fragment>
     <fragment
         android:id="@+id/menu"
-        android:name="com.pjatk.quizmo.Menu"
+        android:name="com.pjatk.quizmo.fragments.Menu"
         android:label="fragment_menu"
         tools:layout="@layout/fragment_menu" >
         <action
@@ -36,7 +36,7 @@
     </fragment>
     <fragment
         android:id="@+id/choose_game"
-        android:name="com.pjatk.quizmo.Choose_game"
+        android:name="com.pjatk.quizmo.fragments.Choose_game"
         android:label="fragment_choose_game"
         tools:layout="@layout/fragment_choose_game" >
         <action
@@ -48,12 +48,16 @@
     </fragment>
     <fragment
         android:id="@+id/play"
-        android:name="com.pjatk.quizmo.Play"
+        android:name="com.pjatk.quizmo.fragments.Play"
         android:label="fragment_play"
-        tools:layout="@layout/fragment_play" />
+        tools:layout="@layout/fragment_play" >
+        <action
+            android:id="@+id/action_play_to_menu"
+            app:destination="@id/menu" />
+    </fragment>
     <fragment
         android:id="@+id/splash"
-        android:name="com.pjatk.quizmo.Splash"
+        android:name="com.pjatk.quizmo.fragments.Splash"
         android:label="fragment_splash"
         tools:layout="@layout/fragment_splash" >
         <action

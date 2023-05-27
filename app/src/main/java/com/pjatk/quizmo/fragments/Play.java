@@ -1,64 +1,114 @@
-package com.pjatk.quizmo;
+package com.pjatk.quizmo.fragments;
 
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.fragment.NavHostFragment;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link Play#newInstance} factory method to
- * create an instance of this fragment.
- */
+import com.pjatk.quizmo.R;
+import com.pjatk.quizmo.databinding.FragmentPlayBinding;
+import com.pjatk.quizmo.logic.QuizManager;
+import com.pjatk.quizmo.logic.QuizQuestion;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
+
 public class Play extends Fragment {
 
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
+    private FragmentPlayBinding binding;
+    private QuizManager quizManager;
 
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
-
-    public Play() {
-        // Required empty public constructor
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+        binding = FragmentPlayBinding.inflate(inflater, container, false);
+        return binding.getRoot();
     }
 
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment Play.
-     */
-    // TODO: Rename and change types and number of parameters
-    public static Play newInstance(String param1, String param2) {
-        Play fragment = new Play();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
-        return fragment;
+    public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+
+        List<QuizQuestion> quizQuestionList = createQuizQuestions();
+
+        quizManager = new QuizManager(quizQuestionList);
+
+        showNextQuestionFromList();
     }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
+
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_play, container, false);
+    public void onDestroyView() {
+        super.onDestroyView();
+        binding = null;
+    }
+
+    private List<QuizQuestion> createQuizQuestions(){
+        List<QuizQuestion> quizQuestionList = new ArrayList<>();
+
+        quizQuestionList.add(new QuizQuestion("Ile to jest 2+2?", Arrays.asList("1", "2", "3", "4"), 3));
+        quizQuestionList.add(new QuizQuestion("Co to jest owca?", Arrays.asList("Roślina", "Owoc", "Zwierzę", "Rzecz"), 2));
+
+        return quizQuestionList;
+    }
+
+    private void showNextQuestionFromList(){
+        if (quizManager.isQuizFinished())
+            showQuizResults();
+        else {
+            QuizQuestion currentQuestion = quizManager.getCurrentQuestionFromList();
+            binding.questionPl.setText(currentQuestion.getQuestion());
+            List<String> answers = currentQuestion.getPossibleAnswers();
+
+            binding.answer1ButtonPl.setText(answers.get(0));
+            binding.answer1ButtonPl.setOnClickListener(new AnswerClickListener(0));
+
+            binding.answer2ButtonPl.setText(answers.get(1));
+            binding.answer2ButtonPl.setOnClickListener(new AnswerClickListener(1));
+
+            binding.answer3ButtonPl.setText(answers.get(2));
+            binding.answer3ButtonPl.setOnClickListener(new AnswerClickListener(2));
+
+            binding.answer4ButtonPl.setText(answers.get(3));
+            binding.answer4ButtonPl.setOnClickListener(new AnswerClickListener(3));
+
+            updateScore();
+        }
+    }
+    
+    private void showQuizResults(){
+        Toast.makeText(getActivity(), "Koniec! Wynik: " + String.valueOf(quizManager.getScore()), Toast.LENGTH_SHORT).show();
+        NavHostFragment.findNavController(Play.this)
+                .navigate(R.id.action_play_to_menu);
+    }
+    
+    private void updateScore(){
+        binding.wynikTextviewChangable.setText("Score: " + quizManager.getScore());
+    }
+    
+    private class AnswerClickListener implements View.OnClickListener {
+        private int selectedAnswer;
+        
+        public AnswerClickListener(int selectedAnswer){
+            this.selectedAnswer = selectedAnswer;
+        }
+        
+        @Override
+        public void onClick(View v){
+            quizManager.answerQuestion(selectedAnswer);
+            showNextQuestionFromList();
+        }
     }
 }

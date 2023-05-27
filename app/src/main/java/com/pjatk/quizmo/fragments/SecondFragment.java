@@ -1,4 +1,4 @@
-package com.pjatk.quizmo;
+package com.pjatk.quizmo.fragments;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
