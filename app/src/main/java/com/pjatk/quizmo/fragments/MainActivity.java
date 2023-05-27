@@ -1,4 +1,4 @@
-package com.pjatk.quizmo;
+package com.pjatk.quizmo.fragments;
 
 import android.os.Bundle;
 
@@ -14,6 +14,7 @@ import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 
+import com.pjatk.quizmo.R;
 import com.pjatk.quizmo.databinding.ActivityMainBinding;
 
 import android.view.Menu;
