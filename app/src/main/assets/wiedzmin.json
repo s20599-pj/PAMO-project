@@ -1,0 +1,17 @@
+[
+  {
+    "question": "Jak ma na imie protagonista Wiedzmina 3?",
+    "options": ["Gedwin", "Germuld", "Geralt", "Gon"],
+    "correctAnswer": 2
+  },
+  {
+    "question": "Ile części ma gra Wiedźmin?",
+    "options": ["1", "2", "3", "4"],
+    "correctAnswer": 2
+  },
+  {
+    "question": "Z jakiej szkoły jest Geralt?",
+    "options": ["Gryfa", "Wilka", "Żmiji", "Niedźwiedzia"],
+    "correctAnswer": 1
+  }
+]
