@@ -16,8 +16,14 @@ import com.pjatk.quizmo.databinding.FragmentPlayBinding;
 import com.pjatk.quizmo.logic.QuizManager;
 import com.pjatk.quizmo.logic.QuizQuestion;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.io.IOException;
+import java.io.InputStream;
+import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 
@@ -58,9 +64,38 @@ public class Play extends Fragment {
     private List<QuizQuestion> createQuizQuestions(){
         List<QuizQuestion> quizQuestionList = new ArrayList<>();
 
-        quizQuestionList.add(new QuizQuestion("Ile to jest 2+2?", Arrays.asList("1", "2", "3", "4"), 3));
-        quizQuestionList.add(new QuizQuestion("Co to jest owca?", Arrays.asList("Roślina", "Owoc", "Zwierzę", "Rzecz"), 2));
+        try{
 
+            InputStream inputStream = getContext().getAssets().open("wiedzmin.json");
+            int inputSize = inputStream.available();
+            byte[] buffer = new byte[inputSize];
+            inputStream.read(buffer);
+            inputStream.close();
+
+            String json = new String(buffer, StandardCharsets.UTF_8);
+
+            JSONArray jsonArray = new JSONArray(json);
+
+            for (int i = 0; i < jsonArray.length(); i++){
+                JSONObject questionObject = jsonArray.getJSONObject(i);
+
+                String question = questionObject.getString("question");
+                JSONArray answersArray = questionObject.getJSONArray("options");
+                int correctAnswer = questionObject.getInt("correctAnswer");
+
+                List<String> answers = new ArrayList<>();
+                for (int j = 0; j < answersArray.length(); j++)
+                    answers.add(answersArray.getString(j));
+
+                QuizQuestion quizQuestion = new QuizQuestion(question, answers, correctAnswer);
+                quizQuestionList.add(quizQuestion);
+            }
+
+        }
+        catch (IOException | JSONException e){
+            e.printStackTrace();
+        }
+        System.out.println(quizQuestionList);
         return quizQuestionList;
     }
 
