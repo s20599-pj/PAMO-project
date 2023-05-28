@@ -1,0 +1,12 @@
+[
+  {
+    "question": "Jak sie nazywa frakcja wrogw Sojuszu",
+    "options": ["Horda", "Morda", "Forda", "Gorda"],
+    "correctAnswer": 0
+  },
+  {
+    "question": "Ile dodatków ma obecnie WoW",
+    "options": ["14", "12", "7", "4"],
+    "correctAnswer": 1
+  }
+]
