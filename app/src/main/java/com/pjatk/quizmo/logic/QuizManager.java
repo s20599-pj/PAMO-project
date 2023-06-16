@@ -3,9 +3,10 @@ package com.pjatk.quizmo.logic;
 import com.pjatk.quizmo.fragments.LeaderboardManager;
 import com.pjatk.quizmo.fragments.QuizResult;
 
+import java.io.Serializable;
 import java.util.List;
 
-public class QuizManager {
+public class QuizManager implements Serializable {
     private List<QuizQuestion> quizQuestionList;
     private LeaderboardManager leaderboardManager;
     private int currentQuestionIndex;
@@ -47,5 +48,9 @@ public class QuizManager {
             leaderboardManager.addQuizResult(new QuizResult("Player Name", score));
         }
         return quizFinished;
+    }
+
+    public LeaderboardManager getLeaderboardManager() {
+        return leaderboardManager;
     }
 }

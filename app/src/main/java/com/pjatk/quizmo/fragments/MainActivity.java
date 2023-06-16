@@ -16,6 +16,7 @@ import androidx.navigation.ui.NavigationUI;
 
 import com.pjatk.quizmo.R;
 import com.pjatk.quizmo.databinding.ActivityMainBinding;
+import com.pjatk.quizmo.logic.QuizManager;
 
 import android.view.Menu;
 import android.view.MenuItem;
@@ -26,11 +27,14 @@ public class MainActivity extends AppCompatActivity {
     private ActivityMainBinding binding;
     private LeaderboardManager leaderboardManager;
 
+    public LeaderboardManager getLeaderboardManager() {
+        return leaderboardManager;
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        leaderboardManager = new LeaderboardManager();
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
@@ -39,6 +43,14 @@ public class MainActivity extends AppCompatActivity {
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_main);
         appBarConfiguration = new AppBarConfiguration.Builder(navController.getGraph()).build();
         NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
+
+        Bundle extras = getIntent().getExtras();
+        if (extras != null && extras.containsKey("quizManager")) {
+            QuizManager quizManager = (QuizManager) extras.getSerializable("quizManager");
+            leaderboardManager = quizManager.getLeaderboardManager();
+        } else {
+            leaderboardManager = new LeaderboardManager();
+        }
 
         binding.fab.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -52,23 +64,16 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_main, menu);
         return true;
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
             return true;
         }
-
         return super.onOptionsItemSelected(item);
     }
 

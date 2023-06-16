@@ -4,17 +4,17 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class LeaderboardManager {
-    private List<QuizResult> quizResults;
+    private List<QuizResult> leaderboardData;
 
     public LeaderboardManager() {
-        quizResults = new ArrayList<>();
+        leaderboardData = new ArrayList<>();
     }
 
     public void addQuizResult(QuizResult quizResult) {
-        quizResults.add(quizResult);
+        leaderboardData.add(quizResult);
     }
 
-    public List<QuizResult> getQuizResults() {
-        return quizResults;
+    public List<QuizResult> getLeaderboardData() {
+        return leaderboardData;
     }
 }
