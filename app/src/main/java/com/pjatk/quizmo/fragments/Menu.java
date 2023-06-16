@@ -12,6 +12,11 @@ import android.view.ViewGroup;
 
 import com.pjatk.quizmo.R;
 import com.pjatk.quizmo.databinding.FragmentMenuBinding;
+import com.pjatk.quizmo.logic.QuizManager;
+import com.pjatk.quizmo.logic.QuizQuestion;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class Menu extends Fragment {
 
@@ -24,18 +29,47 @@ public class Menu extends Fragment {
         return binding.getRoot();
     }
 
-    public void onViewCreated(@NonNull View view, Bundle savedInstanceState){
+    public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+
+        binding.leaderboardButtonPl2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                QuizManager quizManager = createQuizManager();
+
+                Bundle args = new Bundle();
+                args.putSerializable("quizManager", quizManager);
+
+                NavHostFragment.findNavController(Menu.this)
+                        .navigate(R.id.action_menu_to_leaderboardFragment, args);
+            }
+        });
 
         binding.startGameButtonPl.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                QuizManager quizManager = createQuizManager();
+
+                Bundle args = new Bundle();
+                args.putSerializable("quizManager", quizManager);
+
                 NavHostFragment.findNavController(Menu.this)
-                        .navigate(R.id.action_menu_to_choose_game);
+                        .navigate(R.id.action_menu_to_play, args);
             }
         });
-
     }
+
+    private QuizManager createQuizManager() {
+        List<QuizQuestion> quizQuestionList = new ArrayList<>();
+
+        // ... Retrieve quiz questions and answers, populate quizQuestionList accordingly
+
+        QuizManager quizManager = new QuizManager(quizQuestionList);
+        // ... Perform any additional setup or calculations on the quizManager object if needed
+
+        return quizManager;
+    }
+
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -48,5 +82,4 @@ public class Menu extends Fragment {
         super.onDestroyView();
         binding = null;
     }
-
 }
