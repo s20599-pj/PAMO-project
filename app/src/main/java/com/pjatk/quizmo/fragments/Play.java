@@ -31,11 +31,13 @@ public class Play extends Fragment {
 
     private FragmentPlayBinding binding;
     private QuizManager quizManager;
+    private String playButtonIdentifier;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         binding = FragmentPlayBinding.inflate(inflater, container, false);
+        playButtonIdentifier = getArguments().getString("playButtonIdentifier");
         return binding.getRoot();
     }
 
@@ -64,9 +66,26 @@ public class Play extends Fragment {
     private List<QuizQuestion> createQuizQuestions(){
         List<QuizQuestion> quizQuestionList = new ArrayList<>();
 
+        if (playButtonIdentifier == "game1"){
+            quizQuestionList = getDataFromJsonToQuizQuestionList("wiedzmin");
+        } else if (playButtonIdentifier == "game2") {
+            quizQuestionList = getDataFromJsonToQuizQuestionList("starcraft");
+        }
+        else if (playButtonIdentifier == "game3") {
+            quizQuestionList = getDataFromJsonToQuizQuestionList("lol");
+        }
+        else if (playButtonIdentifier == "game4") {
+            quizQuestionList = getDataFromJsonToQuizQuestionList("hearthstone");
+        }
+        return quizQuestionList;
+    }
+
+    private List<QuizQuestion> getDataFromJsonToQuizQuestionList(String fileName){
+        List<QuizQuestion> quizQuestionList = new ArrayList<>();
+
         try{
 
-            InputStream inputStream = getContext().getAssets().open("wiedzmin.json");
+            InputStream inputStream = getContext().getAssets().open(fileName+".json");
             int inputSize = inputStream.available();
             byte[] buffer = new byte[inputSize];
             inputStream.read(buffer);
@@ -122,24 +141,24 @@ public class Play extends Fragment {
             updateScore();
         }
     }
-    
+
     private void showQuizResults(){
         Toast.makeText(getActivity(), "Koniec! Wynik: " + String.valueOf(quizManager.getScore()), Toast.LENGTH_SHORT).show();
         NavHostFragment.findNavController(Play.this)
                 .navigate(R.id.action_play_to_menu);
     }
-    
+
     private void updateScore(){
         binding.wynikTextviewChangable.setText("Score: " + quizManager.getScore());
     }
-    
+
     private class AnswerClickListener implements View.OnClickListener {
         private int selectedAnswer;
-        
+
         public AnswerClickListener(int selectedAnswer){
             this.selectedAnswer = selectedAnswer;
         }
-        
+
         @Override
         public void onClick(View v){
             quizManager.answerQuestion(selectedAnswer);
