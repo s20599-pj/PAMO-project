@@ -28,27 +28,27 @@
 
         <Button
             android:id="@+id/help_button_pl2"
-            android:layout_width="145dp"
-            android:layout_height="48dp"
-            android:layout_marginBottom="64dp"
+            android:layout_width="150dp"
+            android:layout_height="45dp"
+            android:layout_marginTop="4dp"
             android:text="@string/help_pl"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.511"
+            app:layout_constraintHorizontal_bias="0.501"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/leaderboard_button_pl2"
-            app:layout_constraintVertical_bias="0.209"
+            app:layout_constraintVertical_bias="0.0"
             tools:layout_conversion_absoluteHeight="48dp"
             tools:layout_conversion_absoluteWidth="93dp" />
 
         <Button
             android:id="@+id/leaderboard_button_pl2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="48dp"
+            android:layout_width="150dp"
+            android:layout_height="45dp"
+            android:layout_marginTop="4dp"
             android:text="@string/leaderboards_pl"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.503"
+            app:layout_constraintHorizontal_bias="0.501"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/start_game_button_pl"
             tools:layout_conversion_absoluteHeight="48dp"
@@ -66,6 +66,47 @@
             app:srcCompat="@drawable/ic_launcher_foreground"
             tools:layout_conversion_absoluteHeight="108dp"
             tools:layout_conversion_absoluteWidth="108dp" />
+
+        <EditText
+            android:id="@+id/userName_field"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="12dp"
+            android:layout_marginBottom="11dp"
+            android:ems="10"
+            android:inputType="text"
+            android:text="Nazwa gracza"
+            app:layout_constraintBottom_toTopOf="@+id/userName_save"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.205"
+            app:layout_constraintStart_toEndOf="@+id/userName_label"
+            app:layout_constraintTop_toBottomOf="@+id/help_button_pl2"
+            app:layout_constraintVertical_bias="1.0" />
+
+        <Button
+            android:id="@+id/userName_save"
+            android:layout_width="357dp"
+            android:layout_height="52dp"
+            android:layout_marginBottom="92dp"
+            android:text="Zapisz nazwę gracza"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <TextView
+            android:id="@+id/userName_label"
+            android:layout_width="133dp"
+            android:layout_height="28dp"
+            android:layout_marginStart="24dp"
+            android:layout_marginBottom="20dp"
+            android:text="@string/username_pl"
+            android:textAlignment="center"
+            android:textSize="20sp"
+            app:layout_constraintBottom_toTopOf="@+id/userName_save"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/help_button_pl2"
+            app:layout_constraintVertical_bias="0.989" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </FrameLayout>

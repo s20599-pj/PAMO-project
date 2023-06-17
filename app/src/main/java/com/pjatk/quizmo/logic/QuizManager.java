@@ -1,14 +1,20 @@
 package com.pjatk.quizmo.logic;
 
+import com.pjatk.quizmo.fragments.LeaderboardManager;
+import com.pjatk.quizmo.fragments.QuizResult;
+
+import java.io.Serializable;
 import java.util.List;
 
-public class QuizManager {
+public class QuizManager implements Serializable {
     private List<QuizQuestion> quizQuestionList;
+    private LeaderboardManager leaderboardManager;
     private int currentQuestionIndex;
     private int score;
 
     public QuizManager(List<QuizQuestion> quizQuestionList) {
         this.quizQuestionList = quizQuestionList;
+        leaderboardManager = new LeaderboardManager();
         this.currentQuestionIndex = 0;
         this.score = 0;
     }
@@ -36,7 +42,15 @@ public class QuizManager {
         currentQuestionIndex++;
     }
 
-    public boolean isQuizFinished(){
-        return currentQuestionIndex >= quizQuestionList.size();
+    public boolean isQuizFinished() {
+        boolean quizFinished = currentQuestionIndex >= quizQuestionList.size();
+        if (quizFinished) {
+            leaderboardManager.addQuizResult(new QuizResult("Player Name", score));
+        }
+        return quizFinished;
+    }
+
+    public LeaderboardManager getLeaderboardManager() {
+        return leaderboardManager;
     }
 }
