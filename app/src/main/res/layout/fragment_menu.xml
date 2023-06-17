@@ -27,21 +27,6 @@
             tools:layout_conversion_absoluteWidth="143dp" />
 
         <Button
-            android:id="@+id/help_button_pl2"
-            android:layout_width="150dp"
-            android:layout_height="45dp"
-            android:layout_marginTop="4dp"
-            android:text="@string/help_pl"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.501"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/leaderboard_button_pl2"
-            app:layout_constraintVertical_bias="0.0"
-            tools:layout_conversion_absoluteHeight="48dp"
-            tools:layout_conversion_absoluteWidth="93dp" />
-
-        <Button
             android:id="@+id/leaderboard_button_pl2"
             android:layout_width="150dp"
             android:layout_height="45dp"
@@ -79,9 +64,7 @@
             app:layout_constraintBottom_toTopOf="@+id/userName_save"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.205"
-            app:layout_constraintStart_toEndOf="@+id/userName_label"
-            app:layout_constraintTop_toBottomOf="@+id/help_button_pl2"
-            app:layout_constraintVertical_bias="1.0" />
+            app:layout_constraintStart_toEndOf="@+id/userName_label" />
 
         <Button
             android:id="@+id/userName_save"
@@ -103,9 +86,7 @@
             android:textAlignment="center"
             android:textSize="20sp"
             app:layout_constraintBottom_toTopOf="@+id/userName_save"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/help_button_pl2"
-            app:layout_constraintVertical_bias="0.989" />
+            app:layout_constraintStart_toStartOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
