@@ -1,0 +1,42 @@
+[
+  {
+    "question": "Która z klas postaci jest znana z zaklęć i kontroli pola bitwy?",
+    "options": ["Mag", "Łowca", "Paladyn", "Łotr"],
+    "correctAnswer": 0
+  },
+  {
+    "question": "Jaka jest nazwa podstawowego trybu rozgrywki w \"Hearthstone\"?",
+    "options": ["Standard", "Dzicz", "Arena", "Ustawka"],
+    "correctAnswer": 0
+  },
+  {
+    "question": "Który dodatek wprowadził mechanikę zadań?",
+    "options": ["The Witchwood", "Journey to Un'Goro", "Kobolds & Catacombs", "Ashes of Outland"],
+    "correctAnswer": 1
+  },
+  {
+    "question": "Który z bohaterów jest związany z frakcją Hordy?",
+    "options": ["Gul'dan", "Jaina Produmoore", "Arthas", "Uther Lightbringer"],
+    "correctAnswer": 0
+  },
+  {
+    "question": "Która z kart legendarnych przedstawia postać, która stała się symbolem gry?",
+    "options": ["Leeroy Jenkins", "Ragnaros", "Ysera", "Sylvanas"],
+    "correctAnswer": 0
+  },
+  {
+    "question": "Która z klas w ma zdolność do odradzania swoich minionów?",
+    "options": ["Szaman", "Druid", "Kapłan", "Wojownik"],
+    "correctAnswer": 1
+  },
+  {
+    "question": "Jak nazywa się tryb rozgrywki w, w którym gracze rywalizują o wyższy ranking?",
+    "options": ["Casual", "Tavern Brawl", "Adventure", "Ranked"],
+    "correctAnswer": 3
+  },
+  {
+    "question": "Który dodatek  wprowadził tryb rozgrywki zwany ustawką?",
+    "options": ["Rise of shadows", "Descent of Dragons", "Scholomance Academy", "Madness at the Darkmoon Faire"],
+    "correctAnswer": 3
+  }
+]
