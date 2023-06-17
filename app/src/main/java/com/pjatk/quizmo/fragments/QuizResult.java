@@ -8,22 +8,13 @@ public class QuizResult {
         return playerName;
     }
 
-    public void setPlayerName(String playerName) {
-        this.playerName = playerName;
-    }
-
     public int getScore() {
         return score;
     }
 
-    public void setScore(int score) {
-        this.score = score;
-    }
-
     public QuizResult(String playerName, int score) {
+        // Initialize a new QuizResult object with the given player name and score
         this.playerName = playerName;
         this.score = score;
     }
-
-    // Add getters and setters for playerName and score
 }

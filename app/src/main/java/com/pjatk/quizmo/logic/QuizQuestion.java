@@ -7,33 +7,25 @@ public class QuizQuestion {
     private List<String> possibleAnswers;
     private int correctAnswer;
 
+    // Constructor to initialize the QuizQuestion object
     public QuizQuestion(String question, List<String> possibleAnswers, int correctAnswer) {
         this.question = question;
         this.possibleAnswers = possibleAnswers;
         this.correctAnswer = correctAnswer;
     }
 
+    // Getter for retrieving the question
     public String getQuestion() {
         return question;
     }
 
-    public void setQuestion(String question) {
-        this.question = question;
-    }
-
+    // Getter for retrieving the possible answers
     public List<String> getPossibleAnswers() {
         return possibleAnswers;
     }
 
-    public void setPossibleAnswers(List<String> possibleAnswers) {
-        this.possibleAnswers = possibleAnswers;
-    }
-
+    // Getter for retrieving the index of the correct answer
     public int getCorrectAnswer() {
         return correctAnswer;
-    }
-
-    public void setCorrectAnswer(int correctAnswer) {
-        this.correctAnswer = correctAnswer;
     }
 }

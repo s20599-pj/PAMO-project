@@ -12,6 +12,7 @@ public class QuizManager implements Serializable {
     private int currentQuestionIndex;
     private int score;
 
+    // Constructor to initialize the QuizManager object
     public QuizManager(List<QuizQuestion> quizQuestionList) {
         this.quizQuestionList = quizQuestionList;
         leaderboardManager = new LeaderboardManager();
@@ -19,22 +20,17 @@ public class QuizManager implements Serializable {
         this.score = 0;
     }
 
-    public List<QuizQuestion> getQuizQuestionList() {
-        return quizQuestionList;
-    }
-
-    public void setQuizQuestionList(List<QuizQuestion> quizQuestionList) {
-        this.quizQuestionList = quizQuestionList;
-    }
-
+    // Getter for retrieving the current score
     public int getScore() {
         return score;
     }
 
+    // Method to get the current question from the list of quiz questions
     public QuizQuestion getCurrentQuestionFromList(){
         return quizQuestionList.get(currentQuestionIndex);
     }
 
+    // Method to answer a question and update the score and current question index
     public void answerQuestion(int selectedOption){
         QuizQuestion currentQuestion = getCurrentQuestionFromList();
         if(selectedOption == currentQuestion.getCorrectAnswer())
@@ -42,6 +38,7 @@ public class QuizManager implements Serializable {
         currentQuestionIndex++;
     }
 
+    // Method to check if the quiz is finished
     public boolean isQuizFinished() {
         boolean quizFinished = currentQuestionIndex >= quizQuestionList.size();
         if (quizFinished) {
@@ -50,6 +47,7 @@ public class QuizManager implements Serializable {
         return quizFinished;
     }
 
+    // Getter for retrieving the leaderboard manager
     public LeaderboardManager getLeaderboardManager() {
         return leaderboardManager;
     }

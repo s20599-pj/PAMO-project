@@ -1,26 +1,21 @@
 package com.pjatk.quizmo.fragments;
 
 import android.os.Bundle;
-
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.fragment.NavHostFragment;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
-
 import com.pjatk.quizmo.R;
 import com.pjatk.quizmo.databinding.FragmentPlayBinding;
 import com.pjatk.quizmo.logic.LocalStorageManager;
 import com.pjatk.quizmo.logic.QuizManager;
 import com.pjatk.quizmo.logic.QuizQuestion;
-
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-
 import java.io.IOException;
 import java.io.InputStream;
 import java.nio.charset.StandardCharsets;
@@ -67,27 +62,36 @@ public class Play extends Fragment {
         binding = null;
     }
 
+    /**
+     * Creates a list of QuizQuestions based on the selected game.
+     *
+     * @return The list of QuizQuestions.
+     */
     private List<QuizQuestion> createQuizQuestions(){
-
-        if (playButtonIdentifier == "game1"){
+        if (playButtonIdentifier.equals("game1")){
             gameName = "wiedzmin";
-        } else if (playButtonIdentifier == "game2") {
+        } else if (playButtonIdentifier.equals("game2")) {
             gameName = "starcraft";
         }
-        else if (playButtonIdentifier == "game3") {
+        else if (playButtonIdentifier.equals("game3")) {
             gameName = "lol";
         }
-        else if (playButtonIdentifier == "game4") {
+        else if (playButtonIdentifier.equals("game4")) {
             gameName = "hearthstone";
         }
         return getDataFromJsonToQuizQuestionList(gameName);
     }
 
+    /**
+     * Retrieves quiz questions from a JSON file and converts them into a list of QuizQuestions.
+     *
+     * @param fileName The name of the JSON file containing the quiz questions.
+     * @return The list of QuizQuestions.
+     */
     private List<QuizQuestion> getDataFromJsonToQuizQuestionList(String fileName){
         List<QuizQuestion> quizQuestionList = new ArrayList<>();
 
         try{
-
             InputStream inputStream = getContext().getAssets().open(fileName+".json");
             int inputSize = inputStream.available();
             byte[] buffer = new byte[inputSize];
@@ -121,6 +125,9 @@ public class Play extends Fragment {
         return quizQuestionList;
     }
 
+    /**
+     * Displays the next quiz question from the list or shows the quiz results if the quiz is finished.
+     */
     private void showNextQuestionFromList(){
         if (quizManager.isQuizFinished())
             showAndSaveQuizResults();
@@ -145,6 +152,9 @@ public class Play extends Fragment {
         }
     }
 
+    /**
+     * Shows the quiz results, saves the score, and navigates back to the menu.
+     */
     private void showAndSaveQuizResults(){
         Toast.makeText(getActivity(), "Koniec! Wynik: " + String.valueOf(quizManager.getScore()), Toast.LENGTH_SHORT).show();
         localStorageManager.saveScoreToLocalStorage(getContext(), String.valueOf(quizManager.getScore()));
@@ -153,10 +163,16 @@ public class Play extends Fragment {
                 .navigate(R.id.action_play_to_menu);
     }
 
+    /**
+     * Updates the displayed score.
+     */
     private void updateScore(){
         binding.wynikTextviewChangable.setText("Score: " + quizManager.getScore());
     }
 
+    /**
+     * Click listener for the answer buttons. Handles the user's answer selection and shows the next question.
+     */
     private class AnswerClickListener implements View.OnClickListener {
         private int selectedAnswer;
 

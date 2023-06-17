@@ -7,14 +7,12 @@ public class LeaderboardManager {
     private List<QuizResult> leaderboardData;
 
     public LeaderboardManager() {
+        // Initialize an empty leaderboard data list
         leaderboardData = new ArrayList<>();
     }
 
     public void addQuizResult(QuizResult quizResult) {
+        // Add a quiz result to the leaderboard data list
         leaderboardData.add(quizResult);
-    }
-
-    public List<QuizResult> getLeaderboardData() {
-        return leaderboardData;
     }
 }
