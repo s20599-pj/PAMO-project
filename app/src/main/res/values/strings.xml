@@ -13,9 +13,9 @@
     <string name="username_pl">Nazwa gracza</string>
 
 
-    <string name="game1_pl">Gra 1</string>
-    <string name="game2_pl">Gra 2</string>
-    <string name="game3_pl">Gra 3</string>
+    <string name="game1_pl">Wiedźmin</string>
+    <string name="game2_pl">Starcraft</string>
+    <string name="game3_pl">LoL</string>
     <string name="game4_pl">Hearthstone</string>
     <string name="return_pl">Cofnij</string>
     <string name="question_pl">Tutaj bedzie cudowne pytanie</string>

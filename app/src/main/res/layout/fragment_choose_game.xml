@@ -12,20 +12,21 @@
 
         <Button
             android:id="@+id/game2_button_pl2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
+            android:layout_width="196dp"
+            android:layout_height="44dp"
+            android:layout_marginTop="12dp"
             android:text="@string/game2_pl"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.502"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/game1_button_pl2" />
 
         <Button
             android:id="@+id/game4_button_pl2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="196dp"
+            android:layout_height="44dp"
             android:layout_marginStart="160dp"
-            android:layout_marginTop="24dp"
+            android:layout_marginTop="12dp"
             android:layout_marginEnd="163dp"
             android:text="@string/game4_pl"
             app:layout_constraintEnd_toEndOf="parent"
@@ -34,20 +35,22 @@
 
         <Button
             android:id="@+id/return_button_pl2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="196dp"
+            android:layout_height="44dp"
             android:layout_marginStart="160dp"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="12dp"
             android:layout_marginEnd="163dp"
             android:text="@string/return_pl"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/game4_button_pl2" />
+            app:layout_constraintTop_toBottomOf="@+id/game4_button_pl2"
+            app:layout_constraintVertical_bias="0.0" />
 
         <Button
             android:id="@+id/game1_button_pl2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="196dp"
+            android:layout_height="44dp"
             android:layout_marginTop="164dp"
             android:text="@string/game1_pl"
             app:layout_constraintEnd_toEndOf="parent"
@@ -57,10 +60,10 @@
 
         <Button
             android:id="@+id/game3_button_pl2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="196dp"
+            android:layout_height="44dp"
             android:layout_marginStart="162dp"
-            android:layout_marginTop="28dp"
+            android:layout_marginTop="12dp"
             android:layout_marginEnd="161dp"
             android:text="@string/game3_pl"
             app:layout_constraintEnd_toEndOf="parent"

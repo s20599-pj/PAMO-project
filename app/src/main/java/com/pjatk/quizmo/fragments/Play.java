@@ -13,6 +13,7 @@ import android.widget.Toast;
 
 import com.pjatk.quizmo.R;
 import com.pjatk.quizmo.databinding.FragmentPlayBinding;
+import com.pjatk.quizmo.logic.LocalStorageManager;
 import com.pjatk.quizmo.logic.QuizManager;
 import com.pjatk.quizmo.logic.QuizQuestion;
 
@@ -32,12 +33,15 @@ public class Play extends Fragment {
     private FragmentPlayBinding binding;
     private QuizManager quizManager;
     private String playButtonIdentifier;
+    private LocalStorageManager localStorageManager;
+    private String gameName;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         binding = FragmentPlayBinding.inflate(inflater, container, false);
         playButtonIdentifier = getArguments().getString("playButtonIdentifier");
+        localStorageManager = new LocalStorageManager();
         return binding.getRoot();
     }
 
@@ -64,20 +68,19 @@ public class Play extends Fragment {
     }
 
     private List<QuizQuestion> createQuizQuestions(){
-        List<QuizQuestion> quizQuestionList = new ArrayList<>();
 
         if (playButtonIdentifier == "game1"){
-            quizQuestionList = getDataFromJsonToQuizQuestionList("wiedzmin");
+            gameName = "wiedzmin";
         } else if (playButtonIdentifier == "game2") {
-            quizQuestionList = getDataFromJsonToQuizQuestionList("starcraft");
+            gameName = "starcraft";
         }
         else if (playButtonIdentifier == "game3") {
-            quizQuestionList = getDataFromJsonToQuizQuestionList("lol");
+            gameName = "lol";
         }
         else if (playButtonIdentifier == "game4") {
-            quizQuestionList = getDataFromJsonToQuizQuestionList("hearthstone");
+            gameName = "hearthstone";
         }
-        return quizQuestionList;
+        return getDataFromJsonToQuizQuestionList(gameName);
     }
 
     private List<QuizQuestion> getDataFromJsonToQuizQuestionList(String fileName){
@@ -120,7 +123,7 @@ public class Play extends Fragment {
 
     private void showNextQuestionFromList(){
         if (quizManager.isQuizFinished())
-            showQuizResults();
+            showAndSaveQuizResults();
         else {
             QuizQuestion currentQuestion = quizManager.getCurrentQuestionFromList();
             binding.questionPl.setText(currentQuestion.getQuestion());
@@ -142,8 +145,10 @@ public class Play extends Fragment {
         }
     }
 
-    private void showQuizResults(){
+    private void showAndSaveQuizResults(){
         Toast.makeText(getActivity(), "Koniec! Wynik: " + String.valueOf(quizManager.getScore()), Toast.LENGTH_SHORT).show();
+        localStorageManager.saveScoreToLocalStorage(getContext(), String.valueOf(quizManager.getScore()));
+        localStorageManager.saveLeaderboardNameToLocalStorage(getContext(), localStorageManager.getNickNameFromLocalStorage(getContext()));
         NavHostFragment.findNavController(Play.this)
                 .navigate(R.id.action_play_to_menu);
     }
