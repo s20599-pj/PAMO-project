@@ -1,0 +1,42 @@
+[
+  {
+    "question": "Jak nazywa się mapa do klasycznej 5v5 rozgrywki?",
+    "options": ["Ohana", "Summoner's rift", "Twisted treeline", "Dominion", "Dust 2"],
+    "correctAnswer": 1
+  },
+  {
+    "question": "Ile jest lini na mapie Summoner's rift?",
+    "options": ["1", "2", "3", "4"],
+    "correctAnswer": 2
+  },
+  {
+    "question": "Jak nazywa się umiejętność odblokowywana na 6 poziomie na większości postaci?",
+    "options": ["Flash", "Ghost", "Ignite", "Ultimate"],
+    "correctAnswer": 3
+  },
+  {
+    "question": "Jak nazywa się tryb gry z 10 graczami i jedną alejką?",
+    "options": ["Solo q", "Flex", "Aram", "Twisted treeline"],
+    "correctAnswer": 2
+  },
+  {
+    "question": "Jak nazywa się mapa w trybie Aram?",
+    "options": ["Howling abyss", "Inferno", "Dust 2", "Summoner's rift"],
+    "correctAnswer": 0
+  },
+  {
+    "question": "Która postać jest uważana za ikonę gry i jest przedstawiana jako maskotka?",
+    "options": ["Yasuo", "Annie", "Ezreal", "Teemo"],
+    "correctAnswer": 3
+  },
+  {
+    "question": "Jak nazywa się rola która nie gra na żadnej specyficznej linii",
+    "options": ["Top", "Jungle", "Mid", "Bot"],
+    "correctAnswer": 1
+  },
+  {
+    "question": "Ile jest dostępnych czarów przywoływacza w każdym trybie gry?",
+    "options": ["1", "2", "3", "4"],
+    "correctAnswer": 1
+  }
+]

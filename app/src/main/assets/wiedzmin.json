@@ -5,13 +5,38 @@
     "correctAnswer": 2
   },
   {
-    "question": "Ile części ma gra Wiedźmin?",
+    "question": "Ile części ma gra komputerowa Wiedźmin?",
     "options": ["1", "2", "3", "4"],
     "correctAnswer": 2
   },
   {
-    "question": "Z jakiej szkoły jest Geralt?",
+    "question": "Z jakiej wiedźmińskiej szkoły jest Geralt?",
     "options": ["Gryfa", "Wilka", "Żmiji", "Niedźwiedzia"],
     "correctAnswer": 1
+  },
+  {
+    "question": "Jak nazywa się wyspiarski kraj ze świata wiedźmina?",
+    "options": ["Temeria", "Redania", "Kovir", "Skellige"],
+    "correctAnswer": 3
+  },
+  {
+    "question": "Ile dodatków ma gra wiedźmin 3?",
+    "options": ["1", "2", "3", "0"],
+    "correctAnswer": 1
+  },
+  {
+    "question": "Jak nazywa się gra karciana z uniwersum wiedźmina?",
+    "options": ["hearthstone", "magic the gathering", "duel of masters", "gwint"],
+    "correctAnswer": 3
+  },
+  {
+    "question": "Pod jakim miastem dzieje się akcja pierwszego aktu w pierwszej grze komputerowej wiedźmina?",
+    "options": ["Oxenfurt", "Vizima", "Novigrad", "Biały sad"],
+    "correctAnswer": 1
+  },
+  {
+    "question": "Jaki tytuł miała gra komputerowa wiedźmin 2?",
+    "options": ["Zabójcy królów", "Sercia z kamienia", "Krew i wino", "Dziki gon"],
+    "correctAnswer": 0
   }
 ]
